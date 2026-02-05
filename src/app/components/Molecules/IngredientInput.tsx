@@ -32,7 +32,6 @@ export default function IngredientInput({ setDishesAction }: IngredientInputProp
   const [ error, setError ] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
     setLoading(true)
     setError('')
 
@@ -73,7 +72,7 @@ export default function IngredientInput({ setDishesAction }: IngredientInputProp
         disabled={loading}
       />
       <ImageUpload images={uploadedImages} setImagesAction={setUploadedImages} loading={loading} />
-      <button 
+      <button
         className={`h-12 w-full items-center rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#d3d3d3] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handleSubmit}
         disabled={loading}

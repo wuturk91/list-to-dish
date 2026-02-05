@@ -11,11 +11,16 @@ export default function TextArea({ placeholder, value, onChangeAction, disabled 
   return (
     <textarea
       name="ingredients"
-      className={"border-3 border-gray-300 p-2 rounded-md w-full h-20 resize-none" + (disabled ? " opacity-50 cursor-not-allowed" : "")}
+      className={"border-2 border-gray-300 p-2 rounded-md w-full h-20 resize-none" + (disabled ? " opacity-50 cursor-not-allowed" : "")}
       placeholder={placeholder}
-      value={value || ''}
+      value={value ?? ''}
       onChange={(e) => onChangeAction?.(e.target.value)}
       disabled={disabled}
+      suppressHydrationWarning
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="off"
+      spellCheck={false}
     />
   )
 }
