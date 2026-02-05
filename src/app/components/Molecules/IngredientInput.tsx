@@ -74,7 +74,7 @@ export default function IngredientInput({ setDishesAction }: IngredientInputProp
       />
       <ImageUpload images={uploadedImages} setImagesAction={setUploadedImages} loading={loading} />
       <button 
-        className={`h-12 w-full items-center rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`h-12 w-full items-center rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#d3d3d3] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handleSubmit}
         disabled={loading}
       >
