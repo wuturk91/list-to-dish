@@ -1,17 +1,32 @@
-'use client';
-import { useState } from "react";
+'use client'
+import { useState } from "react"
+import { saveRecipe } from "app/lib/actions"
 
-interface Dish {
-  name: string;
-  description: string;
-  prepTime: string;
-  cookingTime: string;
-  ingredients: { item: string; quantity: string }[];
-  instructions: string[];
+export interface Dish {
+  name: string
+  description: string
+  prepTime: string
+  cookingTime: string
+  ingredients: { item: string; quantity: string }[]
+  instructions: string[]
 }
 
 export default function Recipe({ dish }: { dish: Dish }) {
-  const [ expanded, setExpanded ] = useState(false);
+  const [ expanded, setExpanded ] = useState(false)
+  const [ saved, setSaved ] = useState(false)
+  const [ saving, setSaving ] = useState(false)
+
+  const handleSave = async () => {
+    setSaving(true)
+    const result = await saveRecipe(dish)
+    setSaving(false)
+    if (result && result.success) {
+      setSaved(true)
+    } else {
+      console.error('Error saving recipe', result) // replace with user-facing error message and get error details
+    }
+  }
+
   return (
     <div className="mb-4 rounded-lg border border-gray-300 shadow-sm bg-[linear-gradient(135deg,_#667eea_0%,_#764ba2_100%)]">
       <button className="flex flex-col p-4 text-md font-medium mb-2 w-full" onClick={() => setExpanded(!expanded)}>
@@ -38,6 +53,13 @@ export default function Recipe({ dish }: { dish: Dish }) {
               ))}
             </ol>
           </div>
+          <button
+            className={"mt-4 px-4 py-2 rounded-md " + (saved ? "bg-green-500 text-white cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600")}
+            onClick={handleSave}
+            disabled={saved || saving}
+          >
+            {saved ? "Saved" : "Save Recipe"}
+          </button>
         </div>
       )}
     </div>
