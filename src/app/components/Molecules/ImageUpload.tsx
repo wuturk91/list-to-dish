@@ -18,6 +18,18 @@ export default function ImageUpload({ images, setImagesAction, loading }: ImageU
       (fileInputRef.current).click()
     }
   }
+
+  const removeImage = (index: number) => {
+    setImagePreviews(prev => {
+      const updatedPreviews = [...prev]
+      URL.revokeObjectURL(updatedPreviews[index])
+      updatedPreviews.splice(index, 1)
+      return updatedPreviews
+    })
+    let updatedImages = [...images]
+    updatedImages.splice(index, 1)
+    setImagesAction(updatedImages)
+  }
   
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -40,7 +52,10 @@ export default function ImageUpload({ images, setImagesAction, loading }: ImageU
       <h3 className="text-md font-medium mb-2">Upload Images</h3>
       <div className="flex flex-row gap-4 mb-4">
         {imagePreviews.length > 0 &&
-          <ImageThumbnails images={imagePreviews} />
+          <ImageThumbnails
+            images={imagePreviews}
+            removeImageAction={removeImage}
+          />
         }
         <ImageUploadButton
           triggerUploadAction={triggerUpload}
