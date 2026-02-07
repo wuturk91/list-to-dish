@@ -1,21 +1,20 @@
 "use server"
 import { revalidatePath } from "next/cache"
 import clientPromise from "app/lib/mongodb"
-import { Dish } from "app/components/Molecules/Recipe"
+import { Recipe } from "app/types"
 
-// create an interface for the expected form data - clean up types and interfaces across the app
-export async function saveRecipe(dish: Dish) {
+export async function saveRecipe(recipe: Recipe) {
   try {
     const client = await clientPromise
     const db = client.db(process.env.MONGODB_DB)
 
     const rawData = {
-      name: dish.name,
-      description: dish.description,
-      prepTime: dish.prepTime,
-      cookingTime: dish.cookingTime,
-      ingredients: dish.ingredients,
-      instructions: dish.instructions,
+      name: recipe.name,
+      description: recipe.description,
+      prepTime: recipe.prepTime,
+      cookingTime: recipe.cookingTime,
+      ingredients: recipe.ingredients,
+      instructions: recipe.instructions,
       savedAt: new Date()
     }
 

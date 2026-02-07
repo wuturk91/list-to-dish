@@ -1,30 +1,17 @@
 'use client';
-import TextArea from '../Atoms/TextArea';
-import { useState } from 'react';
-import ImageUpload from './ImageUpload';
+import TextArea from '../Atoms/TextArea'
+import { useState } from 'react'
+import ImageUpload from './ImageUpload'
+import { Recipe } from 'app/types'
 
 type IngredientInputProps = {
-  setDishesAction: (dishes: Dish[]) => void
-}
-
-type Ingredients = {
-  item: string
-  quantity: string
-}
-
-interface Dish {
-  name: string
-  description: string
-  prepTime: string
-  cookingTime: string
-  ingredients: Ingredients[]
-  instructions: string[]
+  setRecipeAction: (recipes: Recipe[]) => void
 }
 
 // Lots of refactoring needed here to separate concerns and make code cleaner
 // State persists after a request - should we clear state before new submission
 
-export default function IngredientInput({ setDishesAction }: IngredientInputProps) {
+export default function IngredientInput({ setRecipeAction }: IngredientInputProps) {
   const [ ingredients, setIngredients ] = useState('')
   const [ uploadedImages, setUploadedImages ] = useState<string[]>([])
   const [ imagePreviews, setImagePreviews ] = useState<string[]>([])
@@ -49,7 +36,7 @@ export default function IngredientInput({ setDishesAction }: IngredientInputProp
         throw new Error(data.error || 'Something went wrong - Failed to generate recipes.')
       }
 
-      setDishesAction(data.dishes)
+      setRecipeAction(data.dishes)
     } catch (error: any) {
       console.error('Error submitting ingredients:', error);
       setError(error.message || 'An error occurred while generating recipes.')

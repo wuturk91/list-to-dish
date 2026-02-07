@@ -1,32 +1,24 @@
 'use client';
 import { useState } from "react";
 import IngredientInput from "app/components/Molecules/IngredientInput";
-import Recipe from "app/components/Molecules/Recipe";
-
-interface Dish {
-  name: string;
-  description: string;
-  prepTime: string;
-  cookingTime: string;
-  ingredients: { item: string; quantity: string }[];
-  instructions: string[];
-}
+import RecipeCard from "app/components/Molecules/RecipeCard";
+import { type Recipe } from "app/types";
 
 export default function Generate() {
-  const [ dishes, setDishes ] = useState<Dish[]>([]);
+  const [ recipes, setRecipes ] = useState<Recipe[]>([]);
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans bg-[linear-gradient(135deg,_#667eea_0%,_#764ba2_100%)]">
       <main className="flex min-h-screen w-full max-w-5xl flex-col items-center py-10 px-6 md:px-16">
         <h1 className="text-2xl font-bold">Recipe Generator</h1>
-        <p className="mb-4">Enter ingredients to generate dish ideas.</p>
-        <IngredientInput setDishesAction={setDishes} />
+        <p className="mb-4">Enter ingredients to generate recipes.</p>
+        <IngredientInput setRecipeAction={setRecipes} />
         <div className="mt-8 w-full">
-          {dishes.length > 0 &&
+          {recipes.length > 0 &&
             <h2 className="text-lg font-semibold mb-4">Your Recipes</h2>
           }
-          {dishes.length > 0 && dishes.map((dish, index) => {
+          {recipes.length > 0 && recipes.map((recipe, index) => {
             return (
-              <Recipe key={index} dish={dish} />
+              <RecipeCard key={index} recipe={recipe} />
             )
           })}
         </div>
