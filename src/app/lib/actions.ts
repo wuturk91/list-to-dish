@@ -7,7 +7,7 @@ import { Dish } from "app/components/Molecules/Recipe"
 export async function saveRecipe(dish: Dish) {
   try {
     const client = await clientPromise
-    const db = client.db('list2dish')
+    const db = client.db(process.env.MONGODB_DB)
 
     const rawData = {
       name: dish.name,
@@ -23,6 +23,7 @@ export async function saveRecipe(dish: Dish) {
     revalidatePath('/generate') // should path be passed in?
     return { success: true }
   } catch (error) {
+    console.error('Error saving recipe:', error)
     return { success: false, error: 'Failed to save recipe' }
   }
 }

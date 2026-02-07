@@ -11,7 +11,6 @@ let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
 if (process.env.NODE_ENV === 'development') {
-  // Preserve the connection in development to avoid exhausting the database connections
   let globalWithMongo = global as typeof globalThis & {
     _mongoClientPromise?: Promise<MongoClient>
   }
@@ -22,7 +21,6 @@ if (process.env.NODE_ENV === 'development') {
   }
   clientPromise = globalWithMongo._mongoClientPromise
 } else {
-  // In production, create a new client
   client = new MongoClient(uri, options)
   clientPromise = client.connect()
 }
