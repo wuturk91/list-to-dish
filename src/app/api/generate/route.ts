@@ -5,14 +5,14 @@ import { ChatCompletionContentPart } from 'openai/resources/chat/completions'
 
 export async function POST(request: Request) {
   const systemPrompt = `
-    You are a professional chef who creates unique and delicious dishes based on given ingredients.
+    You are a professional chef who creates unique and delicious recipes based on given ingredients.
     The ingredients can be given as text, images, or a combination of both.
 
-    Your task is to output only a JSON array of dishes, using only the ingredients provided. Each dish must follow this exact structure:
+    Your task is to output only a JSON array of recipes, using only the ingredients provided. Each recipe must follow this exact structure:
 
     {
-      "name": "Dish Name",
-      "description": "Brief description of the dish",
+      "name": "recipe Name",
+      "description": "Brief description of the recipe",
       "prepTime": "Prep time in minutes",
       "cookingTime": "Cooking time in minutes",
       "ingredients": [
@@ -23,13 +23,13 @@ export async function POST(request: Request) {
 
     Requirements:
 
-    Output only a JSON array; do not wrap it in any object (for example, no { "dishes": [...] }).
+    Output only a JSON array; do not wrap it in any object (for example, no { "recipes": [...] }).
 
     Do not include any text before, after, or around the array (no explanations, no markdown, no extra JSON keys).
 
-    Generate 1 to 5 dishes.
+    Generate 1 to 5 recipes.
 
-    Each dish must use only a subset of the provided ingredients, with explicit quantities.
+    Each recipe must use only a subset of the provided ingredients, with explicit quantities.
 
     Use valid JSON syntax (double quotes, correct commas, no trailing commas).
 
@@ -37,8 +37,8 @@ export async function POST(request: Request) {
 
     [
       {
-        "name": "Dish 1",
-        "description": "A tasty dish.",
+        "name": "recipe 1",
+        "description": "A tasty recipe.",
         "prepTime": "10",
         "cookingTime": "20",
         "ingredients": [
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       }
     ]
     
-    Now, using only the provided ingredients by the user, generate the dish array: [list ingredients here].
+    Now, using only the provided ingredients by the user, generate the recipe array: [list ingredients here].
   `
   const generateContent = (requestText: string, base64Images?: string[]): ChatCompletionContentPart[] => {
     const content: ChatCompletionContentPart[] = [
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
       { status: 400 })
     }
 
-    const content = generateContent(`Create a list of creative dish ideas using the following ingredients: ${ingredients}.`, base64Images ? base64Images : undefined)
+    const content = generateContent(`Create a list of creative recipe ideas using the following ingredients: ${ingredients}.`, base64Images ? base64Images : undefined)
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
@@ -93,13 +93,13 @@ export async function POST(request: Request) {
       temperature: 0.7,
     })
 
-    const response = completion.choices[0].message?.content || 'Sorry, no dishes could be generated.'
-    const dishes = JSON.parse(response)
+    const response = completion.choices[0].message?.content || 'Sorry, no recipes could be generated.'
+    const recipes = JSON.parse(response)
 
-    return NextResponse.json({ dishes })
+    return NextResponse.json({ recipes })
   } catch (error) {
-    console.error('Error generating dishes:', error)
-    return NextResponse.json({ error: 'An error occurred while generating dishes' }, 
+    console.error('Error generating recipes:', error)
+    return NextResponse.json({ error: 'An error occurred while generating recipes' }, 
     { status: 500 })
   }
 }
