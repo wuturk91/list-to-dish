@@ -32,7 +32,7 @@ export default function Recipe({ recipe }: { recipe: Recipe }) {
           <div className="mt-3">
             <h4 className="font-semibold text-xl mb-2">Ingredients</h4>
             <ul className="list-disc list-inside">
-              {recipe.ingredients.map((ingredient, id) => (
+              {recipe.ingredients && recipe.ingredients.map((ingredient, id) => (
                 <li key={id}>{ingredient.quantity} of {ingredient.item}</li>
               ))}
             </ul>
@@ -40,7 +40,7 @@ export default function Recipe({ recipe }: { recipe: Recipe }) {
           <div className="mt-3">
             <h4 className="font-semibold text-xl mb-2">Instructions</h4>
             <ol className="list-decimal list-inside">
-              {recipe.instructions.map((step, id) => (
+              {recipe.instructions && recipe.instructions.map((step, id) => (
                 <li key={id} className="mb-1">{step}</li>
               ))}
             </ol>
@@ -50,6 +50,7 @@ export default function Recipe({ recipe }: { recipe: Recipe }) {
             onClick={handleSave}
             disabled={saved || saving}
           >
+            {/* Add ability to unsave recipes and rename button from Saved to Unsave */}
             {saved ? "Saved" : "Save Recipe"}
           </button>
         </div>

@@ -13,10 +13,10 @@ export default function Generate() {
         <p className="mb-4">Enter ingredients to generate recipes.</p>
         <IngredientInput setRecipeAction={setRecipes} />
         <div className="mt-8 w-full">
-          {recipes.length > 0 &&
+          {recipes && recipes.length > 0 &&
             <h2 className="text-lg font-semibold mb-4">Your Recipes</h2>
           }
-          {recipes.length > 0 && recipes.map((recipe, index) => {
+          {recipes && recipes.length > 0 && recipes.map((recipe, index) => {
             return (
               <RecipeCard key={index} recipe={recipe} />
             )

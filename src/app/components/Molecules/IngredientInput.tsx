@@ -36,7 +36,7 @@ export default function IngredientInput({ setRecipeAction }: IngredientInputProp
         throw new Error(data.error || 'Something went wrong - Failed to generate recipes.')
       }
 
-      setRecipeAction(data.dishes)
+      setRecipeAction(data.recipes || [])
     } catch (error: any) {
       console.error('Error submitting ingredients:', error);
       setError(error.message || 'An error occurred while generating recipes.')
