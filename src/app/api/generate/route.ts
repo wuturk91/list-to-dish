@@ -71,7 +71,7 @@ export async function POST(request: Request) {
   try {
     const { ingredients, base64Images } = await request.json()
 
-    if (!ingredients) {
+    if (!ingredients && (!base64Images || base64Images.length === 0)) {
       return NextResponse.json({ error: 'Please provide at least one ingredient' }, 
       { status: 400 })
     }
