@@ -16,7 +16,7 @@
 
 .logo {
   width: 100%;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -35,4 +35,10 @@
 
 .link:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 24px;
+  }
 }
