@@ -3,6 +3,7 @@ import TextArea from '../Atoms/TextArea'
 import { useState } from 'react'
 import ImageUpload from './ImageUpload'
 import { Recipe } from 'app/types'
+import styles from './IngredientInput.module.css'
 
 type IngredientInputProps = {
   setRecipeAction: (recipes: Recipe[]) => void
@@ -50,8 +51,8 @@ export default function IngredientInput({ setRecipeAction }: IngredientInputProp
   }
 
   return (
-    <div className="w-full mt-2 bg-white p-4 rounded-md text-black">
-      <h3 className="text-lg font-semibold mb-2">Enter your ingredients</h3>
+    <div className={styles.container}>
+      <h3 className={styles.title}>Enter your ingredients</h3>
       <TextArea
         placeholder="Enter your ingredients here..."
         value={ingredients}
@@ -60,7 +61,7 @@ export default function IngredientInput({ setRecipeAction }: IngredientInputProp
       />
       <ImageUpload images={uploadedImages} setImagesAction={setUploadedImages} loading={loading} />
       <button
-        className={`h-12 w-full items-center rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#d3d3d3] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={styles.submitButton}
         onClick={handleSubmit}
         disabled={loading}
       >

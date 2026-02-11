@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import styles from './page.module.css'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -33,52 +34,52 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="w-full h-screen flex flex-col items-center bg-[linear-gradient(135deg,_#667eea_0%,_#764ba2_100%)]">
-      <h1 className="text-2xl font-bold mt-20">Register</h1>
-      <form onSubmit={handleSubmit} className="mt-4 bg-white p-6 rounded-md shadow-md w-150">
+    <div className={styles.container}>
+      <h1 className={styles.title}>Register</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
         
-        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+        {error && <p className={styles.error}>{error}</p>}
 
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+        <div className={styles.inputGroup}>
+          <label htmlFor="name" className={styles.label}>Name</label>
           <input
             type="text"
             id="name"
             name="name"
             required
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            className={styles.input} />
         </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <div className={styles.inputGroup}>
+          <label htmlFor="email" className={styles.label}>Email</label>
           <input
             type="email"
             id="email"
             name="email"
             required
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            className={styles.input} />
         </div>
-        <div className="mb-6">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+        <div className={styles.inputGroupLast}>
+          <label htmlFor="password" className={styles.label}>Password</label>
           <input
             type="password"
             id="password"
             name="password"
             required
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            className={styles.input} />
         </div>
         <button 
           type="submit"
-          className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className={styles.submitButton}
           disabled={loading}
         >
           {loading ? "Registering..." : "Register"}
         </button>
 
-        <p className="mt-4 text-center text-gray-600">
-          Already have an account? <Link href="/login" className="text-purple-600 hover:underline">Login</Link>
+        <p className={styles.footer}>
+          Already have an account? <Link href="/login" className={styles.link}>Login</Link>
         </p>
       </form>
     </div>

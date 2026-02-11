@@ -2,6 +2,7 @@
 import { useRef, useState } from 'react';
 import ImageThumbnails from './ImageThumbnails';
 import ImageUploadButton from '../Atoms/ImageUploadButton';
+import styles from './ImageUpload.module.css'
 
 type ImageUploadProps = {
   images: string[]
@@ -49,8 +50,8 @@ export default function ImageUpload({ images, setImagesAction, loading }: ImageU
   }
   return (
     <div>
-      <h3 className="text-md font-medium mb-2">Upload Images</h3>
-      <div className="flex flex-row gap-4 mb-4">
+      <h3 className={styles.title}>Upload Images</h3>
+      <div className={styles.uploadRow}>
         {imagePreviews.length > 0 &&
           <ImageThumbnails
             images={imagePreviews}

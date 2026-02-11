@@ -1,20 +1,33 @@
-'use client';
-import { useState } from "react";
-import IngredientInput from "app/components/Molecules/IngredientInput";
-import RecipeCard from "app/components/Molecules/RecipeCard";
-import { type Recipe } from "app/types";
+'use client'
+import { useSession } from "next-auth/react"
+import { redirect } from "next/navigation"
+import { useState } from "react"
+import IngredientInput from "app/components/Molecules/IngredientInput"
+import RecipeCard from "app/components/Molecules/RecipeCard"
+import { type Recipe } from "app/types"
+import styles from './page.module.css'
 
 export default function Generate() {
+  const { status } = useSession()
   const [ recipes, setRecipes ] = useState<Recipe[]>([]);
+  
+  if (status === "loading") {
+    return <div className={styles.loading}>Loading...</div>
+  }
+  
+  if (status === "unauthenticated") {
+    redirect("/login")
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans bg-[linear-gradient(135deg,_#667eea_0%,_#764ba2_100%)]">
-      <main className="flex min-h-screen w-full max-w-5xl flex-col items-center py-10 px-6 md:px-16">
-        <h1 className="text-2xl font-bold">Recipe Generator</h1>
-        <p className="mb-4">Enter ingredients to generate recipes.</p>
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <h1 className={styles.title}>Recipe Generator</h1>
+        <p className={styles.subtitle}>Enter ingredients to generate recipes.</p>
         <IngredientInput setRecipeAction={setRecipes} />
-        <div className="mt-8 w-full">
+        <div className={styles.recipesSection}>
           {recipes && recipes.length > 0 &&
-            <h2 className="text-lg font-semibold mb-4">Your Recipes</h2>
+            <h2 className={styles.recipesTitle}>Your Recipes</h2>
           }
           {recipes && recipes.length > 0 && recipes.map((recipe, index) => {
             return (

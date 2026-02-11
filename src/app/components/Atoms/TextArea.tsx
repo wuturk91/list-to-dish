@@ -1,5 +1,7 @@
 'use client';
 
+import styles from './TextArea.module.css'
+
 type TextAreaProps = {
   placeholder?: string
   value?: string
@@ -11,7 +13,7 @@ export default function TextArea({ placeholder, value, onChangeAction, disabled 
   return (
     <textarea
       name="ingredients"
-      className={"border-2 border-gray-300 p-2 rounded-md w-full h-20 resize-none" + (disabled ? " opacity-50 cursor-not-allowed" : "")}
+      className={`${styles.textarea} ${disabled ? styles.disabled : ''}`}
       placeholder={placeholder}
       value={value ?? ''}
       onChange={(e) => onChangeAction?.(e.target.value)}

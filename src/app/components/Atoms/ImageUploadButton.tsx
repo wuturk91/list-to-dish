@@ -1,5 +1,7 @@
 'use client'
 
+import styles from './ImageUploadButton.module.css'
+
 type ImageUploadButtonProps = {
   triggerUploadAction: () => void
   fileInputRef: React.RefObject<HTMLInputElement | null>
@@ -10,7 +12,7 @@ type ImageUploadButtonProps = {
 export default function ImageUploadButton({ triggerUploadAction, fileInputRef, handleFileChangeAction, loading }: ImageUploadButtonProps) {
   return (
     <button 
-      className="h-24 w-24 rounded-md mb-2 items-center bg-foreground px-5 text-background transition-colors hover:bg-[#d3d3d3] border border-dashed border-gray-400"
+      className={styles.button}
       onClick={triggerUploadAction}        
     >
       +
