@@ -1,93 +1,114 @@
-@import "tailwindcss";
-
+/* ================================
+   CSS VARIABLES
+   ================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colours */
+  --color-grey: #959595;
+  --color-blue: #3b82f6;
+  --color-blue-hover: #2563eb;
+  --color-blue-grey: #4b5563;
+  --color-blue-grey-dark:#1f2937;
+  --color-green: #22c55e;
+  --color-purple: #4f46e5;
+  --color-purple-hover: #4338ca;
+  --color-purple-focus: #6366f1;
+  --color-purple-light: #9333ea;
+
+  /* Backgrounds */
+  --background-light: #FFF;
+  --background-grey: var(--color-grey);
+  --background-blue: var(--color-blue);
+  --background-blue-hover: var(--color-blue-hover);
+  --background-green: var(--color-green);
+
+  /* Gradients */
+  --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-purple-hover: linear-gradient(135deg, #5569d9 0%, #653d8a 100%);
+
+  /* Borders */
+  --border-light-sm: 1px solid #d1d5db;
+  --border-light-md: 2px solid #d1d5db;
+  --border-dashed-sm: 3px dashed #505050;
+  --border-rad-sm: 6px;
+  --border-rad-md: 16px;
+  --border-rad-lg: 9999px;
+
+  /* Text Colours */
+  --text-light: #FFF;
+  --text-dark: #000;
+  --text-error: #ef4444;
+  --label: #374151;
+
+  /* Font Sizes */
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 40px;
+  --text-3xl: 60px;
+  --text-4xl: 72px;
+
+  /* Typography */
+  --font-sans: Arial, Helvetica, sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-xxl: 64px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 0 0 2px var(--color-purple-focus);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ================================
+   BASE STYLES
+   ================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--gradient-purple);
+  color: var(--text-light);
+  font-family: var(--font-sans);
 }
 
+/* ================================
+   NEEDS ADDRESSING
+   ================================ */
 
+/* This should be used globaly - perhaps a container component to keep pages consistent */
 .container-main {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 64px);
-  padding: 40px;
-  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-
-
-.landing-jumbo {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: fit-content;
-  padding: 16px;
-  align-items: center;
-  background-color: white;
-  color: black;
-  border-radius: 6px;
-}
-
-.landing-icon {
-  display: block;
-  font-size: 72px;
-  margin-bottom: 4px;
-  animation: gentle-bounce 2s ease-in-out infinite;
+  padding: var(--spacing-xl);
+  font-family: var(--font-sans);
 }
 
 /* HEADINGS */
 h1 {
-  font-size: 40px;
-  line-height: 40px;
+  font-size: var(--text-2xl);
+  line-height: var(--spacing-xl);
   font-weight: bold;
   text-align: center;
+  @media (min-width: 768px) {
+    font-size: var(--text-3xl);
+    line-height: 60px;
+}
 }
 
 h2 {
-  font-size: 24px;
+  font-size: var(--text-xl);
   line-height: 30px;
-  margin: 16px;
+  margin: var(--spacing-md);
   text-align: center;
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 60px;
-    line-height: 60px;
-  }
-}
-
-/* MEDIA QUERIES */
-@media (min-width: 768px) {
-  .landing-jumbo {
-    max-width: 50%;
-    margin: auto;
-    min-width: 700px;
-  }
-  .landing-icon {
-    margin-bottom: 10px;
-  }
 }
 
 /* ANIMATIONS */

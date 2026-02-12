@@ -3,10 +3,12 @@
 .textarea {
   width: 100%;
   height: 80px;
-  padding: 8px;
-  border: 2px solid #d1d5db;
-  border-radius: 6px;
+  padding: var(--spacing-sm);
+  border: var(--border-light-md);
+  border-radius: var(--border-rad-sm);
   resize: none;
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
 }
 
 .disabled {

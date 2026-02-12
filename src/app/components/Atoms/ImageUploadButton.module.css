@@ -6,17 +6,17 @@
   justify-content: center;
   width: 96px;
   height: 96px;
-  margin-bottom: 8px;
-  padding: 20px;
-  font-size: 24px;
-  background-color: var(--foreground);
-  color: var(--background);
-  border: 1px dashed #9ca3af;
-  border-radius: 6px;
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  font-size: var(--text-xl);
+  background-color: var(--color-purple);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--border-rad-sm);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .button:hover {
-  background-color: #d3d3d3;
+  background-color: var(--color-purple-hover);
 }

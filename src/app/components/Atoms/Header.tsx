@@ -9,22 +9,22 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Link href="/">
-        <h1 className={styles.logo}>List 2 Dish</h1>
+        <h1 className={styles.headerHeading}>List 2 Dish</h1>
       </Link>
       <div className={styles.nav}>
         {session ? (
           <>
-            <span className={styles.userName}>{session.user?.name}</span>
-            <button onClick={() => signOut({ callbackUrl: '/' })} className={styles.link}>
+            {/* <span className={styles.userName}>{session.user?.name}</span> */}
+            <button onClick={() => signOut({ callbackUrl: '/' })} className={styles.authButton}>
               Sign Out
             </button>
           </>
         ) : (
           <>
-            <Link href="/login" className={styles.link}>
+            <Link href="/login" className={styles.authButton}>
               Login
             </Link>
-            <Link href="/register" className={styles.link}>
+            <Link href="/register" className={styles.authButton}>
               Register
             </Link>
           </>

@@ -11,13 +11,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: var(--spacing-md);
+  height: var(--spacing-md);
   font-weight: bold;
-  color: white;
-  background-color: #1f2937;
+  color: var(--text-light);
+  background-color: var(--color-blue-grey-dark); 
   border: none;
-  border-radius: 50%;
+  border-radius: var(--border-rad-md);
   opacity: 0.75;
   cursor: pointer;
   transition: opacity 0.2s;
@@ -31,6 +31,6 @@
   width: 96px;
   height: 96px;
   object-fit: cover;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border: var(--border-light-sm);
+  border-radius: var(--border-rad-sm);
 }

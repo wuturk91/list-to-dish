@@ -8,37 +8,44 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 64px;
-  padding: 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-bottom: 1px solid white;
+  height: var(--spacing-xxl);
+  padding: var(--spacing-md);
+  background: var(--gradient-purple);
+  border-bottom: 1px solid var(--text-light);
+  a {
+    text-decoration: none;
+  }
 }
 
-.logo {
+.headerHeading {
   width: 100%;
-  font-size: 22px;
+  font-size: var(--text-lg);
   font-weight: bold;
+  color: var(--text-light);
+
+  @media (min-width: 768px) {
+    font-size: var(--text-xl);
+  }
 }
 
 .nav {
   display: flex;
-  gap: 16px;
+  gap: var(--spacing-md);
+  align-items: center;
 }
 
 .userName {
-  color: white;
+  color: var(--text-light);
 }
 
-.link {
-  color: white;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-@media (min-width: 768px) {
-  .logo {
-    font-size: 24px;
+.authButton {
+  padding: var(--spacing-md);
+  border-radius: var(--border-rad-sm);
+  border: 1px solid var(--text-light);
+  background-image: var(--gradient-purple);
+  color: var(--text-light);
+  &:hover {
+    background-image: var(--gradient-purple-hover);
   }
+  cursor: pointer;
 }
