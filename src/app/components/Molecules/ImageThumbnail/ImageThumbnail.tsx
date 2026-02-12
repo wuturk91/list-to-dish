@@ -1,5 +1,5 @@
 'use client'
-import ImagePreview from "app/components/Molecules/ImagePreview/ImagePreview";
+import ImagePreview from "@components/Molecules/ImagePreview/ImagePreview";
 import styles from './ImageThumbnail.module.css'
 
 type ImageThumbnailProps = {

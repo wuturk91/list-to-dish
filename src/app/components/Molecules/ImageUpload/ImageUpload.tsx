@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState } from 'react';
-import ImageThumbnail from '../ImageThumbnail/ImageThumbnail';
-import ImageUploadButton from '../../Atoms/ImageUploadButton/ImageUploadButton';
+import ImageThumbnail from '@components/Molecules/ImageThumbnail/ImageThumbnail';
+import ImageUploadButton from '@components/Atoms/ImageUploadButton/ImageUploadButton';
 import styles from './ImageUpload.module.css'
 
 type ImageUploadProps = {

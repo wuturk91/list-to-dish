@@ -1,8 +1,8 @@
 'use client';
-import TextArea from '../../Atoms/TextArea/TextArea'
+import TextArea from '@components/Atoms/TextArea/TextArea'
 import { useState } from 'react'
-import ImageUpload from '../ImageUpload/ImageUpload'
-import { Recipe } from 'types'
+import ImageUpload from '@components/Molecules/ImageUpload/ImageUpload'
+import { Recipe } from '@customTypes/index'
 import styles from './IngredientInput.module.css'
 
 type IngredientInputProps = {
