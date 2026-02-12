@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useState } from 'react';
-import ImageThumbnails from './ImageThumbnails';
-import ImageUploadButton from '../Atoms/ImageUploadButton';
+import ImageThumbnail from '../ImageThumbnail/ImageThumbnail';
+import ImageUploadButton from '../../Atoms/ImageUploadButton/ImageUploadButton';
 import styles from './ImageUpload.module.css'
 
 type ImageUploadProps = {
@@ -53,7 +53,7 @@ export default function ImageUpload({ images, setImagesAction, loading }: ImageU
       <h3 className={styles.title}>Upload Images</h3>
       <div className={styles.uploadRow}>
         {imagePreviews.length > 0 &&
-          <ImageThumbnails
+          <ImageThumbnail
             images={imagePreviews}
             removeImageAction={removeImage}
           />

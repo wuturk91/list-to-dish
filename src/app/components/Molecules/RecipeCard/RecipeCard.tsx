@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react"
-import { saveRecipe } from "app/lib/actions"
-import { type Recipe } from "app/types"
+import { saveRecipe } from "lib/actions"
+import { type Recipe } from "types"
 import styles from './RecipeCard.module.css'
 
 export default function Recipe({ recipe }: { recipe: Recipe }) {

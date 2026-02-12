@@ -2,9 +2,9 @@
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 import { useState } from "react"
-import IngredientInput from "app/components/Molecules/IngredientInput"
-import RecipeCard from "app/components/Molecules/RecipeCard"
-import { type Recipe } from "app/types"
+import IngredientInput from "app/components/Molecules/IngredientInput/IngredientInput"
+import RecipeCard from "app/components/Molecules/RecipeCard/RecipeCard"
+import { type Recipe } from "types"
 import styles from './page.module.css'
 
 export default function Generate() {

@@ -1,7 +1,7 @@
 "use server"
 import { revalidatePath } from "next/cache"
-import clientPromise from "app/lib/mongodb"
-import { Recipe } from "app/types"
+import clientPromise from "lib/mongodb"
+import { Recipe } from "types"
 
 export async function saveRecipe(recipe: Recipe) {
   try {

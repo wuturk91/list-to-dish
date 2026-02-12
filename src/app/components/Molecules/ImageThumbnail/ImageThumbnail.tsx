@@ -1,13 +1,13 @@
 'use client'
-import ImagePreview from "app/components/Atoms/ImagePreview";
-import styles from './ImageThumbnails.module.css'
+import ImagePreview from "app/components/Molecules/ImagePreview/ImagePreview";
+import styles from './ImageThumbnail.module.css'
 
-type ImageThumbnailsProps = {
+type ImageThumbnailProps = {
   images: string[],
   removeImageAction: (index: number) => void
 }
 
-export default function ImageThumbnails({ images, removeImageAction }: ImageThumbnailsProps) {
+export default function ImageThumbnail({ images, removeImageAction }: ImageThumbnailProps) {
   return (
     <div className={styles.container}>
       {images.map((imageUrl, index) => (
