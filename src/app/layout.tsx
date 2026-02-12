@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Atoms/Header";
+import Header from "./components/Atoms/Header/Header";
 import Providers from "./providers";
 
 const geistMono = Geist_Mono({
