@@ -4,29 +4,6 @@
   position: relative;
 }
 
-.removeButton {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--spacing-md);
-  height: var(--spacing-md);
-  font-weight: bold;
-  color: var(--text-light);
-  background-color: var(--color-blue-grey-dark); 
-  border: none;
-  border-radius: var(--border-rad-md);
-  opacity: 0.75;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.removeButton:hover {
-  opacity: 1;
-}
-
 .image {
   width: 96px;
   height: 96px;

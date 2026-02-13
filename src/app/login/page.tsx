@@ -4,6 +4,8 @@ import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import styles from './page.module.css'
+import Button from "@components/Atoms/Button/Button"
+import FormInput from "@components/Atoms/FormInput/FormInput"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -38,34 +40,31 @@ export default function LoginPage() {
         
         {error && <p className={styles.error}>{error}</p>}
 
-        <div className={styles.inputGroup}>
-          <label htmlFor="email" className={styles.label}>Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-            className={styles.input} />
-        </div>
-        <div className={styles.inputGroupLast}>
-          <label htmlFor="password" className={styles.label}>Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input} />
-        </div>
-        <button 
-          type="submit"
-          className={styles.submitButton}
+        <FormInput
+          label="Email"
+          name="email"
+          type="email"
+          required
           disabled={loading}
+          onChangeAction={setEmail}
+        />
+        <FormInput
+          label="Password"
+          name="password"
+          type="password"
+          required
+          disabled={loading}
+          onChangeAction={setPassword}
+        />
+        <Button
+          variant="primary"
+          type="submit"
+          disabled={loading}
+          loading={loading}
+          loadingText="Logging in..."
         >
-          {loading ? "Logging in..." : "Log In"}
-        </button>
-
+          Log In
+        </Button>
         <p className={styles.footer}>
           Don't have an account? <Link href="/register" className={styles.link}>Register</Link>
         </p>

@@ -3,6 +3,7 @@ import TextArea from '@components/Atoms/TextArea/TextArea'
 import { useState } from 'react'
 import ImageUpload from '@components/Molecules/ImageUpload/ImageUpload'
 import { Recipe } from '@customTypes/index'
+import Button from '../../Atoms/Button/Button';
 import styles from './IngredientInput.module.css'
 
 type IngredientInputProps = {
@@ -12,14 +13,16 @@ type IngredientInputProps = {
 // Lots of refactoring needed here to separate concerns and make code cleaner
 // State persists after a request - should we clear state before new submission
 
-export default function IngredientInput({ setRecipeAction }: IngredientInputProps) {
+export default function IngredientInput({
+  setRecipeAction
+}: IngredientInputProps) {
   const [ ingredients, setIngredients ] = useState('')
   const [ uploadedImages, setUploadedImages ] = useState<string[]>([])
   const [ imagePreviews, setImagePreviews ] = useState<string[]>([])
   const [ loading, setLoading ] = useState(false)
   const [ error, setError ] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async () => {
     setLoading(true)
     setError('')
 
@@ -60,13 +63,15 @@ export default function IngredientInput({ setRecipeAction }: IngredientInputProp
         disabled={loading}
       />
       <ImageUpload images={uploadedImages} setImagesAction={setUploadedImages} loading={loading} />
-      <button
-        className={styles.submitButton}
-        onClick={handleSubmit}
+      <Button
+        variant="primary"
         disabled={loading}
+        loading={loading}
+        loadingText="Generating..."
+        onClickAction={handleSubmit}
       >
         Generate
-      </button>
+      </Button>
     </div>
   )
 }

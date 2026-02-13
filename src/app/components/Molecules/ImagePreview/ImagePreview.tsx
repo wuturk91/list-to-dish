@@ -1,5 +1,6 @@
 'use client'
 
+import Button from '../../Atoms/Button/Button'
 import styles from './ImagePreview.module.css'
 
 type ImagePreviewProps = {
@@ -7,15 +8,18 @@ type ImagePreviewProps = {
   removeImageAction: () => void
 }
 
-export default function ImagePreview({ imageDataUrl, removeImageAction }: ImagePreviewProps) {
+export default function ImagePreview({
+  imageDataUrl,
+  removeImageAction
+}: ImagePreviewProps) {
   return (
     <div className={styles.container}>
-      <button
-        className={styles.removeButton}
-        onClick={removeImageAction}
+      <Button
+        variant="icon"
+        onClickAction={removeImageAction}
       >
         &times;
-      </button>
+      </Button>
       <img
         className={styles.image}
         src={imageDataUrl}

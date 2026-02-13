@@ -1,5 +1,6 @@
 import styles from './page.module.css'
 import Link from 'next/link';
+import Button from './components/Atoms/Button/Button';
 
 export default function Home() {
   return (
@@ -10,7 +11,9 @@ export default function Home() {
         <h2>Just list your ingredients and get AI generated personalised recipes in seconds.</h2>
 
         <div className={styles.ctaContainer}>
-          <Link href="/generate" className={styles.ctaButton}>Try It Now</Link>
+          <Button variant="cta">
+            <Link href="/generate">Try It Now</Link>
+          </Button>
         </div>
       </main>
       <div className={styles.features}>

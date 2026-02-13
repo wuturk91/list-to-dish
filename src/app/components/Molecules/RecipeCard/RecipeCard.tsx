@@ -3,6 +3,7 @@ import { useState } from "react"
 import { saveRecipe } from "@lib/actions"
 import { type Recipe } from "@customTypes/index"
 import styles from './RecipeCard.module.css'
+import Button from "../../Atoms/Button/Button"
 
 export default function Recipe({ recipe }: { recipe: Recipe }) {
   const [ expanded, setExpanded ] = useState(false)
@@ -46,13 +47,13 @@ export default function Recipe({ recipe }: { recipe: Recipe }) {
               ))}
             </ol>
           </div>
-          <button
-            className={`${styles.saveButton} ${saved ? styles.saved : ''}`}
-            onClick={handleSave}
+          <Button
+            variant="primary"
             disabled={saved || saving}
+            onClickAction={handleSave}
           >
             {saved ? "Saved" : "Save Recipe"}
-          </button>
+          </Button>
         </div>
       )}
     </div>

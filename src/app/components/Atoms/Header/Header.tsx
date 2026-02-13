@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { useSession, signOut } from "next-auth/react"
 import styles from "./Header.module.css"
+import Button from "../Button/Button"
+import { ButtonVariant } from "../Button/Button"
 
 export default function Header() {
   const { data: session } = useSession()
@@ -15,18 +17,25 @@ export default function Header() {
         {session ? (
           <>
             {/* <span className={styles.userName}>{session.user?.name}</span> */}
-            <button onClick={() => signOut({ callbackUrl: '/' })} className={styles.authButton}>
+            <Button
+              variant="outline"
+              onClickAction={() => signOut({ callbackUrl: '/' })}
+            >
               Sign Out
-            </button>
+            </Button>
           </>
         ) : (
           <>
-            <Link href="/login" className={styles.authButton}>
-              Login
-            </Link>
-            <Link href="/register" className={styles.authButton}>
-              Register
-            </Link>
+            <Button variant="outline">
+              <Link href="/login">
+                Login
+              </Link>
+            </Button>
+            <Button variant="outline">
+              <Link href="/register">
+                Register
+              </Link>
+            </Button>
           </>
         )}
       </div>

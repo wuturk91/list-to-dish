@@ -9,7 +9,12 @@ type ImageUploadButtonProps = {
   loading: boolean
 }
 
-export default function ImageUploadButton({ triggerUploadAction, fileInputRef, handleFileChangeAction, loading }: ImageUploadButtonProps) {
+export default function ImageUploadButton({
+  triggerUploadAction,
+  fileInputRef,
+  handleFileChangeAction,
+  loading
+}: ImageUploadButtonProps) {
   return (
     <button 
       className={styles.button}

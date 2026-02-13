@@ -7,7 +7,10 @@ type ImageThumbnailProps = {
   removeImageAction: (index: number) => void
 }
 
-export default function ImageThumbnail({ images, removeImageAction }: ImageThumbnailProps) {
+export default function ImageThumbnail({
+  images,
+  removeImageAction
+}: ImageThumbnailProps) {
   return (
     <div className={styles.container}>
       {images.map((imageUrl, index) => (

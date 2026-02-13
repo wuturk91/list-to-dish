@@ -1,0 +1,33 @@
+/* FormInput Component Styles */
+
+.inputGroup {
+  margin-bottom: var(--spacing-md);
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--label);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border: var(--border-light-sm);
+  border-radius: var(--border-rad-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

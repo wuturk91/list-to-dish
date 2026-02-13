@@ -9,7 +9,12 @@ type TextAreaProps = {
   disabled?: boolean
 }
 
-export default function TextArea({ placeholder, value, onChangeAction, disabled }: TextAreaProps) {
+export default function TextArea({
+  placeholder,
+  value,
+  onChangeAction,
+  disabled
+}: TextAreaProps) {
   return (
     <textarea
       name="ingredients"

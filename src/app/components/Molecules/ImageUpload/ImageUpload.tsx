@@ -10,7 +10,11 @@ type ImageUploadProps = {
   loading: boolean
 }
 
-export default function ImageUpload({ images, setImagesAction, loading }: ImageUploadProps) {
+export default function ImageUpload({
+  images,
+  setImagesAction,
+  loading
+}: ImageUploadProps) {
   const [ imagePreviews, setImagePreviews ] = useState<string[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
     

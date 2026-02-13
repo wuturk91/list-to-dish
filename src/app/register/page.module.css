@@ -35,61 +35,12 @@
   color: var(--text-error);
 }
 
-.inputGroup {
-  margin-bottom: var(--spacing-md);
-}
-
-.inputGroupLast {
-  margin-bottom: var(--spacing-lg);
-}
-
 .label {
   display: block;
   margin-bottom: var(--spacing-sm);
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--label);
-}
-
-.input {
-  display: block;
-  width: 100%;
-  margin-top: var(--spacing-sm);
-  padding: var(--spacing-sm);
-  border: var(--border-light-sm);
-  border-radius: var(--border-rad-sm);
-  box-shadow: var(--shadow-sm);
-}
-
-.input:focus {
-  outline: none;
-  box-shadow: var(--shadow-focus);
-}
-
-.submitButton {
-  width: 100%;
-  padding: var(--spacing-md);
-  font-weight: 600;
-  color: var(--text-light);
-  background-color: var(--color-purple);
-  border: none;
-  border-radius: var(--border-rad-sm);
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.submitButton:hover {
-  background-color: var(--color-purple-hover);
-}
-
-.submitButton:focus {
-  outline: none;
-  box-shadow: var(--shadow-focus);
-}
-
-.submitButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .footer {
