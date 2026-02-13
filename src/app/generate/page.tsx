@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { useState } from "react"
 import IngredientInput from "@components/Molecules/IngredientInput/IngredientInput"
 import RecipeCard from "@components/Molecules/RecipeCard/RecipeCard"
+import PageContainer from "@components/Templates/PageContainer/PageContainer"
 import { type Recipe } from "@customTypes/index"
 import styles from './page.module.css'
 
@@ -12,7 +13,11 @@ export default function Generate() {
   const [ recipes, setRecipes ] = useState<Recipe[]>([]);
   
   if (status === "loading") {
-    return <div className={styles.loading}>Loading...</div>
+    return (
+      <PageContainer centered>
+        <div className={styles.loading}>Loading...</div>
+      </PageContainer>
+    )
   }
   
   if (status === "unauthenticated") {
@@ -20,7 +25,7 @@ export default function Generate() {
   }
 
   return (
-    <div className={styles.container}>
+    <PageContainer centered>
       <main className={styles.main}>
         <h1 className={styles.title}>Recipe Generator</h1>
         <p className={styles.subtitle}>Enter ingredients to generate recipes.</p>
@@ -36,6 +41,6 @@ export default function Generate() {
           })}
         </div>
       </main>
-    </div>
+    </PageContainer>
   );
 }

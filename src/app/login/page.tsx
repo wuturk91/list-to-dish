@@ -6,6 +6,7 @@ import Link from "next/link"
 import styles from './page.module.css'
 import Button from "@components/Atoms/Button/Button"
 import FormInput from "@components/Atoms/FormInput/FormInput"
+import PageContainer from "@components/Templates/PageContainer/PageContainer"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -34,7 +35,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className={styles.container}>
+    <PageContainer>
       <h1 className={styles.title}>Login</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         
@@ -69,6 +70,6 @@ export default function LoginPage() {
           Don't have an account? <Link href="/register" className={styles.link}>Register</Link>
         </p>
       </form>
-    </div>
+    </PageContainer>
   )
 }

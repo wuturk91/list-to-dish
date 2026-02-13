@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Button from "@components/Atoms/Button/Button"
 import FormInput from "@components/Atoms/FormInput/FormInput"
+import PageContainer from "@components/Templates/PageContainer/PageContainer"
 import styles from './page.module.css'
 
 export default function RegisterPage() {
@@ -35,7 +36,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className={styles.container}>
+    <PageContainer>
       <h1 className={styles.title}>Register</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         
@@ -78,6 +79,6 @@ export default function RegisterPage() {
           Already have an account? <Link href="/login" className={styles.link}>Login</Link>
         </p>
       </form>
-    </div>
+    </PageContainer>
   )
 }
