@@ -1,0 +1,21 @@
+.alertContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--text-error);
+  margin-bottom: 10px;
+  border-radius: var(--border-rad-sm);
+  p {
+    margin: none;
+  }
+}
+
+.error {
+  color: var(--text-error);
+  
+}
+
+.success {
+  /* Define Colour When Success Is Implemented */
+}

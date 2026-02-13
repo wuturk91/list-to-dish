@@ -6,6 +6,7 @@ import Button from "@components/Atoms/Button/Button"
 import FormInput from "@components/Atoms/FormInput/FormInput"
 import PageContainer from "@components/Templates/PageContainer/PageContainer"
 import styles from './page.module.css'
+import Alert from "../components/Atoms/Alert/Alert"
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -40,7 +41,7 @@ export default function RegisterPage() {
       <h1 className={styles.title}>Register</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         
-        {error && <p className={styles.error}>{error}</p>}
+        {error && <Alert variant="error" message={error} />}
 
         <FormInput
           label="Name"
